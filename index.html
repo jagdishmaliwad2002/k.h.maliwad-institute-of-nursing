@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K.H. Maliwad Institute of Nursing | Khanpur, Mahisagar</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Custom Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        medicalTeal: '#0d9488',
+                        medicalDark: '#0f172a',
+                        medicalLight: '#f0fdfa',
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    animation: {
+                        marquee: 'marquee 25s linear infinite',
+                    },
+                    keyframes: {
+                        marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-100%)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        html { scroll-behavior: smooth; }
+        .hero-bg {
+            background-image: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75)), url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=2000&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .marquee-container {
+            display: flex;
+            overflow: hidden;
+            user-select: none;
+            gap: 2rem;
+        }
+        .marquee-content {
+            flex-shrink: 0;
+            display: flex;
+            justify-content: space-around;
+            gap: 2rem;
+            min-width: 100%;
+            animation: scroll 30s linear infinite;
+        }
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+        .gallery-img {
+            transition: all 0.5s ease;
+        }
+        .gallery-img:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="font-sans text-slate-700 bg-gray-50">
+
+    <!-- Top Bar -->
+    <div class="bg-medicalDark text-gray-300 py-2 text-sm">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
+            <div class="flex items-center space-x-6 mb-2 md:mb-0">
+                <span><i class="fas fa-map-marker-alt text-medicalTeal mr-2"></i>Khanpur, Dist: Mahisagar, Gujarat</span>
+                <span><i class="fas fa-envelope text-medicalTeal mr-2"></i>info@khmaliwadnursing.edu.in</span>
+                <span><i class="fas fa-phone-alt text-medicalTeal mr-2"></i>+91 98765 43210</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="#" class="hover:text-white transition bg-medicalTeal/20 px-3 py-1 rounded-full border border-medicalTeal/30"><i class="fas fa-user-graduate mr-1 text-medicalTeal"></i> Student Login (ERP)</a>
+                <span class="text-gray-600">|</span>
+                <a href="#" class="hover:text-white transition"><i class="fas fa-chalkboard-teacher mr-1"></i> Faculty Login</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <div class="flex items-center space-x-3">
+                <div class="bg-gradient-to-br from-medicalTeal to-teal-800 text-white p-2 rounded-xl shadow-lg">
+                    <i class="fas fa-heartbeat text-2xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl font-extrabold text-medicalDark leading-tight tracking-tight">K.H. MALIWAD</h1>
+                    <p class="text-xs text-medicalTeal font-bold tracking-widest uppercase">Institute of Nursing</p>
+                </div>
+            </div>
+
+            <!-- Desktop Menu -->
+            <div class="hidden lg:flex items-center space-x-8 font-medium">
+                <a href="#" class="text-medicalTeal hover:text-medicalDark transition">Home</a>
+                <a href="#about" class="hover:text-medicalTeal transition">About Us</a>
+                <a href="#programs" class="hover:text-medicalTeal transition">Courses</a>
+                <a href="#gallery" class="hover:text-medicalTeal transition">Campus Life</a>
+                <a href="#admissions" class="hover:text-medicalTeal transition">Admissions</a>
+                <a href="#contact" class="hover:text-medicalTeal transition">Contact</a>
+                <a href="#admissions" class="bg-medicalTeal text-white px-6 py-2.5 rounded-full hover:bg-teal-700 transition shadow-lg shadow-medicalTeal/30">Apply Now</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="lg:hidden text-2xl text-medicalDark focus:outline-none">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t absolute w-full shadow-xl">
+            <div class="flex flex-col px-4 py-4 space-y-4 font-medium">
+                <a href="#" class="text-medicalTeal">Home</a>
+                <a href="#about">About Us</a>
+                <a href="#programs">Courses</a>
+                <a href="#gallery">Campus Life</a>
+                <a href="#admissions">Admissions</a>
+                <a href="#contact">Contact</a>
+                <a href="#" class="text-medicalTeal font-bold"><i class="fas fa-user-graduate mr-2"></i>Student Login (ERP)</a>
+                <a href="#admissions" class="bg-medicalTeal text-white text-center px-6 py-2 rounded-full">Apply Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-bg text-white py-24 lg:py-36 relative">
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-3xl">
+                <span class="bg-medicalTeal/20 text-medicalTeal border border-medicalTeal/30 px-4 py-1.5 rounded-full text-sm font-semibold tracking-wide mb-6 inline-block backdrop-blur-sm">
+                    <i class="fas fa-star mr-2"></i>Approved by INC & Gujarat Nursing Council
+                </span>
+                <h1 class="text-4xl lg:text-7xl font-extrabold leading-tight mb-6 tracking-tight">Nurturing Compassion.<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-cyan-300">Empowering Future Nurses.</span></h1>
+                <p class="text-lg lg:text-xl text-gray-300 mb-10 font-light max-w-2xl leading-relaxed">Join K.H. Maliwad Institute of Nursing in Khanpur, Mahisagar. Experience world-class clinical training, expert faculty, and a vibrant campus life dedicated to healthcare excellence.</p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-5">
+                    <a href="#programs" class="bg-medicalTeal text-center px-8 py-4 rounded-full font-bold hover:bg-teal-700 transition shadow-xl shadow-medicalTeal/30 flex items-center justify-center">Discover Our Programs <i class="fas fa-arrow-right ml-3"></i></a>
+                    <a href="#gallery" class="glass-panel text-medicalDark text-center px-8 py-4 rounded-full font-bold hover:bg-white transition shadow-xl flex items-center justify-center"><i class="fas fa-images mr-3 text-medicalTeal"></i> View Campus Gallery</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Floating Stats Badge -->
+        <div class="absolute bottom-10 right-10 glass-panel text-medicalDark p-6 rounded-2xl shadow-2xl hidden lg:block border-l-4 border-medicalTeal">
+            <div class="flex items-center space-x-5">
+                <div class="bg-medicalTeal/10 p-3 rounded-full">
+                    <i class="fas fa-award text-4xl text-medicalTeal"></i>
+                </div>
+                <div>
+                    <p class="font-extrabold text-2xl text-medicalDark">100%</p>
+                    <p class="text-sm font-semibold text-gray-600">Placement Assistance</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Features Bar -->
+    <section class="bg-medicalDark text-white py-12 relative z-20 -mt-8 mx-4 lg:mx-20 rounded-2xl shadow-2xl">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="flex items-center space-x-4">
+                <div class="bg-white/10 p-3 rounded-xl text-medicalTeal"><i class="fas fa-microscope text-2xl"></i></div>
+                <div>
+                    <h4 class="font-bold text-lg">Advanced Labs</h4>
+                    <p class="text-sm text-gray-400">State-of-the-art simulation.</p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="bg-white/10 p-3 rounded-xl text-medicalTeal"><i class="fas fa-user-md text-2xl"></i></div>
+                <div>
+                    <h4 class="font-bold text-lg">Expert Faculty</h4>
+                    <p class="text-sm text-gray-400">Experienced professionals.</p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="bg-white/10 p-3 rounded-xl text-medicalTeal"><i class="fas fa-hospital text-2xl"></i></div>
+                <div>
+                    <h4 class="font-bold text-lg">Hospital Tie-ups</h4>
+                    <p class="text-sm text-gray-400">Top clinical placements.</p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="bg-white/10 p-3 rounded-xl text-medicalTeal"><i class="fas fa-bus text-2xl"></i></div>
+                <div>
+                    <h4 class="font-bold text-lg">Urban Connectivity</h4>
+                    <p class="text-sm text-gray-400">Full transport available.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Placement Partners Marquee (Right to Left) -->
+    <section class="py-10 bg-white border-b border-gray-100 overflow-hidden">
+        <div class="text-center mb-6">
+            <p class="text-sm font-bold text-gray-400 uppercase tracking-widest">Our Students are placed at Top Hospitals</p>
+        </div>
+        <div class="marquee-container">
+            <div class="marquee-content">
+                <!-- Partner 1 -->
+                <div class="flex items-center space-x-3 bg-gray-50 px-6 py-3 rounded-full border border-gray-200 shadow-sm">
+                    <i class="fas fa-hospital-symbol text-medicalTeal text-xl"></i>
+                    <span class="font-bold text-medicalDark whitespace-nowrap">Civil Hospital, Khanpur</span>
+                </div>
+                <!-- Partner 2 -->
+                <div class="flex items-center space-x-3 bg-gray-50 px-6 py-3 rounded-full border border-gray-200 shadow-sm">
+                    <i class="fas fa-hospital text-blue-500 text-xl"></i>
+                    <span class="font-bold text-medicalDark whitespace-nowrap">GMERS Medical College</span>
+                </div>
+                <!-- Partner 3 -->
+                <div class="flex items-center space-x-3 bg-gray-50 px-6 py-3 rounded-full border border-gray-200 shadow-sm">
+                    <i class="fas fa-clinic-medical text-red-500 text-xl"></i>
+                    <span class="font-bold text-medicalDark whitespace-nowrap">Apollo Hospitals</span>
+                </div>
+                <!-- Partner 4 -->
+                <div class="flex items-center space-x-3 bg-gray-50 px-6 py-3 rounded-full border border-gray-200 shadow-sm">
+                    <i class="fas fa-heart-pulse text-rose-500 text-xl"></i>
+                    <span class="font-bold text-medicalDark whitespace-nowrap">Zydus Hospital</span>
+                </div>
+                <!-- Partner 5 -->
+                <div class="flex items-center space-x-3 bg-gray-50 px-6 py-3 rounded-full border border-gray-200 shadow-sm">
+                    <i class="fas fa-stethoscope text-teal-600 text-xl"></i>
+                    <span class="font-bold text-medicalDark whitespace-nowrap">Sterling Hospital</span>
+                </div>
+                <!-- Partner 6 -->
+                <div class="flex items-center space-x-3 bg-gray-50 px-6 py-3 rounded-full border border-gray-200 shadow-sm">
+                    <i class="fas fa-user-md text-indigo-500 text-xl"></i>
+                    <span class="font-bold text-medicalDark whitespace-nowrap">HCG Hospitals</span>
+                </div>
+                <!-- Duplicate for seamless loop -->
+                <div class="flex items-center space-x-3 bg-gray-50 px-6 py-3 rounded-full border border-gray-200 shadow-sm">
+                    <i class="fas fa-hospital-symbol text-medicalTeal text-xl"></i>
+                    <span class="font-bold text-medicalDark whitespace-nowrap">Civil Hospital, Khanpur</span>
+                </div>
+                <div class="flex items-center space-x-3 bg-gray-50 px-6 py-3 rounded-full border border-gray-200 shadow-sm">
+                    <i class="fas fa-hospital text-blue-500 text-xl"></i>
+                    <span class="font-bold text-medicalDark whitespace-nowrap">GMERS Medical College</span>
+                </div>
+                <div class="flex items-center space-x-3 bg-gray-50 px-6 py-3 rounded-full border border-gray-200 shadow-sm">
+                    <i class="fas fa-clinic-medical text-red-500 text-xl"></i>
+                    <span class="font-bold text-medicalDark whitespace-nowrap">Apollo Hospitals</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-white relative">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <div class="lg:w-1/2 relative">
+                    <div class="absolute -top-6 -left-6 w-32 h-32 bg-medicalTeal/10 rounded-full z-0"></div>
+                    <img src="https://images.unsplash.com/photo-1581056771107-24ca5f033842?q=80&w=1000&auto=format&fit=crop" alt="Nursing Students" class="rounded-3xl shadow-2xl w-full object-cover h-[550px] relative z-10 border-4 border-white">
+                    <div class="absolute -bottom-8 -right-8 glass-panel p-6 rounded-2xl shadow-xl z-20 border-l-4 border-medicalTeal hidden md:block">
+                        <p class="text-3xl font-extrabold text-medicalDark">10+</p>
+                        <p class="text-sm font-bold text-gray-500 uppercase tracking-wider">Years of Excellence</p>
+                    </div>
+                </div>
+                <div class="lg:w-1/2">
+                    <h4 class="text-medicalTeal font-bold tracking-widest uppercase mb-3 text-sm">About Our Institute</h4>
+                    <h2 class="text-3xl lg:text-5xl font-extrabold text-medicalDark mb-6 leading-tight">Excellence in Nursing Education & Healthcare.</h2>
+                    <p class="text-gray-600 mb-6 text-lg leading-relaxed">At K.H. Maliwad Institute of Nursing, we believe in developing compassionate, skilled, and confident healthcare professionals ready to make a difference in society. Located in the heart of Khanpur, Mahisagar, our institute is dedicated to providing top-tier nursing education.</p>
+                    
+                    <div class="grid grid-cols-2 gap-6 mb-10">
+                        <div class="bg-medicalLight p-5 rounded-2xl border border-teal-100 hover:shadow-md transition">
+                            <h3 class="text-3xl font-extrabold text-medicalTeal">1:10</h3>
+                            <p class="text-sm font-semibold text-gray-600 mt-1">Faculty-to-Student Ratio</p>
+                        </div>
+                        <div class="bg-medicalLight p-5 rounded-2xl border border-teal-100 hover:shadow-md transition">
+                            <h3 class="text-3xl font-extrabold text-medicalTeal">15+</h3>
+                            <p class="text-sm font-semibold text-gray-600 mt-1">Clinical Tie-ups</p>
+                        </div>
+                    </div>
+                    
+                    <a href="#gallery" class="inline-block bg-medicalDark text-white px-8 py-4 rounded-full font-bold hover:bg-slate-800 transition shadow-xl">Explore Campus Life <i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW: Campus Gallery Section -->
+    <section id="gallery" class="py-24 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h4 class="text-medicalTeal font-bold tracking-widest uppercase mb-3 text-sm">Campus Life</h4>
+                <h2 class="text-3xl lg:text-5xl font-extrabold text-medicalDark mb-6">Life at K.H. Maliwad Institute</h2>
+                <p class="text-gray-600 text-lg">Take a glimpse into our vibrant campus, modern facilities, and the daily life of our dedicated nursing students.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Gallery Item 1 -->
+                <div class="relative overflow-hidden rounded-2xl group h-80 shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=800&auto=format&fit=crop" alt="Nursing Lab" class="w-full h-full object-cover gallery-img">
+                    <div class="absolute inset-0 bg-gradient-to-t from-medicalDark/90 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
+                        <div>
+                            <h3 class="text-white font-bold text-xl">Advanced Simulation Lab</h3>
+                            <p class="text-medicalTeal text-sm font-semibold">Practical Training</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Gallery Item 2 -->
+                <div class="relative overflow-hidden rounded-2xl group h-80 shadow-lg lg:col-span-2">
+                    <img src="https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=1200&auto=format&fit=crop" alt="Students Studying" class="w-full h-full object-cover gallery-img">
+                    <div class="absolute inset-0 bg-gradient-to-t from-medicalDark/90 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
+                        <div>
+                            <h3 class="text-white font-bold text-xl">Collaborative Learning</h3>
+                            <p class="text-medicalTeal text-sm font-semibold">Group Study Sessions</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Gallery Item 3 -->
+                <div class="relative overflow-hidden rounded-2xl group h-80 shadow-lg lg:col-span-2">
+                    <img src="https://images.unsplash.com/photo-1551076805-e1869033e561?q=80&w=1200&auto=format&fit=crop" alt="Clinical Training" class="w-full h-full object-cover gallery-img">
+                    <div class="absolute inset-0 bg-gradient-to-t from-medicalDark/90 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
+                        <div>
+                            <h3 class="text-white font-bold text-xl">Hospital Clinical Training</h3>
+                            <p class="text-medicalTeal text-sm font-semibold">Real-world Experience</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Gallery Item 4 -->
+                <div class="relative overflow-hidden rounded-2xl group h-80 shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=800&auto=format&fit=crop" alt="Campus Building" class="w-full h-full object-cover gallery-img">
+                    <div class="absolute inset-0 bg-gradient-to-t from-medicalDark/90 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
+                        <div>
+                            <h3 class="text-white font-bold text-xl">Modern Campus</h3>
+                            <p class="text-medicalTeal text-sm font-semibold">Urban Infrastructure</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Gallery Item 5 -->
+                <div class="relative overflow-hidden rounded-2xl group h-80 shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=800&auto=format&fit=crop" alt="Student Nurse" class="w-full h-full object-cover gallery-img">
+                    <div class="absolute inset-0 bg-gradient-to-t from-medicalDark/90 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
+                        <div>
+                            <h3 class="text-white font-bold text-xl">Student Life</h3>
+                            <p class="text-medicalTeal text-sm font-semibold">Vibrant Community</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Gallery Item 6 -->
+                <div class="relative overflow-hidden rounded-2xl group h-80 shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1584982751601-97dcc096659c?q=80&w=800&auto=format&fit=crop" alt="Library" class="w-full h-full object-cover gallery-img">
+                    <div class="absolute inset-0 bg-gradient-to-t from-medicalDark/90 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
+                        <div>
+                            <h3 class="text-white font-bold text-xl">Digital Library</h3>
+                            <p class="text-medicalTeal text-sm font-semibold">Extensive Resources</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="inline-block border-2 border-medicalTeal text-medicalTeal px-8 py-3 rounded-full font-bold hover:bg-medicalTeal hover:text-white transition">View Full Gallery</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW: Location & Transport Section -->
+    <section class="py-24 bg-white relative overflow-hidden">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <div class="lg:w-1/2">
+                    <h4 class="text-medicalTeal font-bold tracking-widest uppercase mb-3 text-sm">Location & Transport</h4>
+                    <h2 class="text-3xl lg:text-5xl font-extrabold text-medicalDark mb-6">Urban Connectivity & Easy Accessibility.</h2>
+                    <p class="text-gray-600 mb-8 text-lg leading-relaxed">Our campus is strategically located in the urban heart of Khanpur, Mahisagar, ensuring seamless connectivity for students from all nearby towns and cities.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="bg-medicalTeal/10 p-3 rounded-full mr-4 text-medicalTeal mt-1">
+                                <i class="fas fa-bus text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg text-medicalDark">Full Transport Available</h4>
+                                <p class="text-gray-600">Dedicated college bus services covering major routes across Mahisagar district. Regular GSRTC buses available from Khanpur Bus Stand.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-medicalTeal/10 p-3 rounded-full mr-4 text-medicalTeal mt-1">
+                                <i class="fas fa-map-marked-alt text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg text-medicalDark">Prime Urban Location</h4>
+                                <p class="text-gray-600">Located on the main highway road, easily accessible by auto-rickshaws, taxis, and private vehicles. Safe and secure neighborhood.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-medicalTeal/10 p-3 rounded-full mr-4 text-medicalTeal mt-1">
+                                <i class="fas fa-parking text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg text-medicalDark">Ample Parking Space</h4>
+                                <p class="text-gray-600">Spacious parking facilities for two-wheelers and four-wheelers within the campus premises.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2 w-full">
+                    <div class="bg-gray-100 p-2 rounded-3xl shadow-xl border border-gray-200">
+                        <!-- Google Map Embed (Placeholder for Khanpur, Mahisagar) -->
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d117806.92469768854!2d73.666666!3d23.166666!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3961e6d8c8e8e8e8%3A0x8e8e8e8e8e8e8e8e!2sKhanpur%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+                            class="w-full h-[450px] rounded-2xl" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section id="programs" class="py-24 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h4 class="text-medicalTeal font-bold tracking-widest uppercase mb-3 text-sm">Academics</h4>
+                <h2 class="text-3xl lg:text-5xl font-extrabold text-medicalDark mb-6">Discover Our Programs</h2>
+                <p class="text-gray-600 text-lg">A comprehensive curriculum designed to inspire and challenge every learner, preparing them for global healthcare standards.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Program 1 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:-translate-y-2 transition duration-300 border border-gray-100 group">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=500&auto=format&fit=crop" alt="B.Sc Nursing" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute top-4 right-4 bg-medicalTeal text-white text-xs font-bold px-3 py-1 rounded-full">4 Years</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-medicalDark mb-2">B.Sc. Nursing</h3>
+                        <p class="text-sm text-gray-500 mb-4 font-semibold">Eligibility: 10+2 with PCB</p>
+                        <p class="text-gray-600 text-sm mb-6">Comprehensive training for professional nursing roles in hospitals and communities.</p>
+                        <a href="#" class="text-medicalTeal font-bold hover:text-medicalDark transition flex items-center">View Details <i class="fas fa-arrow-right ml-2 text-xs"></i></a>
+                    </div>
+                </div>
+
+                <!-- Program 2 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:-translate-y-2 transition duration-300 border border-gray-100 group">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=500&auto=format&fit=crop" alt="GNM" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute top-4 right-4 bg-medicalTeal text-white text-xs font-bold px-3 py-1 rounded-full">3 Years</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-medicalDark mb-2">G.N.M.</h3>
+                        <p class="text-sm text-gray-500 mb-4 font-semibold">Eligibility: 10+2 (Any Stream)</p>
+                        <p class="text-gray-600 text-sm mb-6">General Nursing and Midwifery focusing on practical patient care and midwifery skills.</p>
+                        <a href="#" class="text-medicalTeal font-bold hover:text-medicalDark transition flex items-center">View Details <i class="fas fa-arrow-right ml-2 text-xs"></i></a>
+                    </div>
+                </div>
+
+                <!-- Program 3 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:-translate-y-2 transition duration-300 border border-gray-100 group">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=500&auto=format&fit=crop" alt="ANM" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute top-4 right-4 bg-medicalTeal text-white text-xs font-bold px-3 py-1 rounded-full">2 Years</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-medicalDark mb-2">A.N.M.</h3>
+                        <p class="text-sm text-gray-500 mb-4 font-semibold">Eligibility: 10+2 (Any Stream)</p>
+                        <p class="text-gray-600 text-sm mb-6">Auxiliary Nurse Midwife program focusing on community health and basic nursing.</p>
+                        <a href="#" class="text-medicalTeal font-bold hover:text-medicalDark transition flex items-center">View Details <i class="fas fa-arrow-right ml-2 text-xs"></i></a>
+                    </div>
+                </div>
+
+                <!-- Program 4 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:-translate-y-2 transition duration-300 border border-gray-100 group">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1551076805-e1869033e561?q=80&w=500&auto=format&fit=crop" alt="Post Basic B.Sc" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute top-4 right-4 bg-medicalTeal text-white text-xs font-bold px-3 py-1 rounded-full">2 Years</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-medicalDark mb-2">Post Basic B.Sc.</h3>
+                        <p class="text-sm text-gray-500 mb-4 font-semibold">Eligibility: GNM Qualified</p>
+                        <p class="text-gray-600 text-sm mb-6">Advanced nursing degree for registered nurses seeking career progression.</p>
+                        <a href="#" class="text-medicalTeal font-bold hover:text-medicalDark transition flex items-center">View Details <i class="fas fa-arrow-right ml-2 text-xs"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admissions CTA -->
+    <section id="admissions" class="py-24 bg-medicalDark text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <i class="fas fa-stethoscope text-[400px] absolute -right-20 -bottom-20"></i>
+        </div>
+        <div class="container mx-auto px-4 relative z-10 text-center">
+            <h2 class="text-3xl lg:text-6xl font-extrabold mb-6">Begin Your Journey Toward a Bright Future</h2>
+            <p class="text-xl text-gray-300 mb-10 max-w-2xl mx-auto font-light">Join a community where you will be inspired, supported, and empowered to achieve your dreams in healthcare.</p>
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+                <a href="#" class="bg-medicalTeal px-10 py-4 rounded-full font-bold text-lg hover:bg-teal-700 transition shadow-xl shadow-medicalTeal/30">Apply Now <i class="fas fa-arrow-right ml-2"></i></a>
+                <a href="#" class="bg-white text-medicalDark px-10 py-4 rounded-full font-bold text-lg hover:bg-gray-200 transition shadow-xl"><i class="fas fa-calendar-alt mr-2"></i> Schedule a Tour</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-slate-900 text-gray-300 pt-20 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                
+                <!-- Column 1: About -->
+                <div>
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="bg-gradient-to-br from-medicalTeal to-teal-800 text-white p-2 rounded-xl">
+                            <i class="fas fa-heartbeat text-xl"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-lg font-extrabold text-white leading-tight">K.H. MALIWAD</h2>
+                            <p class="text-xs text-medicalTeal font-bold tracking-widest uppercase">Institute of Nursing</p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-400 mb-8 leading-relaxed">Nurturing Compassion. Empowering Future Nurses. Building a better tomorrow through quality healthcare education in Khanpur, Mahisagar.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-medicalTeal transition"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-medicalTeal transition"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-medicalTeal transition"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-medicalTeal transition"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <!-- Column 2: Quick Links -->
+                <div>
+                    <h3 class="text-white font-bold text-lg mb-6 border-b-2 border-medicalTeal pb-2 inline-block">Quick Links</h3>
+                    <ul class="space-y-4 text-sm">
+                        <li><a href="#about" class="hover:text-medicalTeal transition flex items-center"><i class="fas fa-chevron-right text-xs mr-3 text-medicalTeal"></i>About Us</a></li>
+                        <li><a href="#programs" class="hover:text-medicalTeal transition flex items-center"><i class="fas fa-chevron-right text-xs mr-3 text-medicalTeal"></i>Courses & Admissions</a></li>
+                        <li><a href="#gallery" class="hover:text-medicalTeal transition flex items-center"><i class="fas fa-chevron-right text-xs mr-3 text-medicalTeal"></i>Campus Gallery</a></li>
+                        <li><a href="#" class="hover:text-medicalTeal transition flex items-center"><i class="fas fa-chevron-right text-xs mr-3 text-medicalTeal"></i>Anti-Ragging Committee</a></li>
+                        <li><a href="#" class="hover:text-medicalTeal transition flex items-center"><i class="fas fa-chevron-right text-xs mr-3 text-medicalTeal"></i>Grievance Redressal</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Student Resources -->
+                <div>
+                    <h3 class="text-white font-bold text-lg mb-6 border-b-2 border-medicalTeal pb-2 inline-block">Student Resources</h3>
+                    <ul class="space-y-4 text-sm">
+                        <li><a href="#" class="hover:text-medicalTeal transition text-yellow-400 font-semibold flex items-center"><i class="fas fa-user-graduate text-xs mr-3"></i>Student Login (ERP)</a></li>
+                        <li><a href="#" class="hover:text-medicalTeal transition flex items-center"><i class="fas fa-chalkboard-teacher text-xs mr-3 text-medicalTeal"></i>Faculty Login</a></li>
+                        <li><a href="#" class="hover:text-medicalTeal transition flex items-center"><i class="fas fa-calendar-alt text-xs mr-3 text-medicalTeal"></i>Academic Calendar</a></li>
+                        <li><a href="#" class="hover:text-medicalTeal transition flex items-center"><i class="fas fa-file-alt text-xs mr-3 text-medicalTeal"></i>Mandatory Disclosures (INC)</a></li>
+                        <li><a href="#" class="hover:text-medicalTeal transition flex items-center"><i class="fas fa-book text-xs mr-3 text-medicalTeal"></i>Library Portal</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Contact & Newsletter -->
+                <div>
+                    <h3 class="text-white font-bold text-lg mb-6 border-b-2 border-medicalTeal pb-2 inline-block">Contact Us</h3>
+                    <ul class="space-y-4 text-sm mb-8">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-medicalTeal mt-1 mr-4 text-lg"></i>
+                            <span>K.H. Maliwad Institute of Nursing,<br>Main Highway Road, Khanpur,<br>Dist: Mahisagar, Gujarat - 389230</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt text-medicalTeal mr-4 text-lg"></i>
+                            <span>+91 98765 43210</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope text-medicalTeal mr-4 text-lg"></i>
+                            <span>info@khmaliwadnursing.edu.in</span>
+                        </li>
+                    </ul>
+                    
+                    <h4 class="text-white font-bold mb-3">Newsletter</h4>
+                    <form class="flex">
+                        <input type="email" placeholder="Your email address" class="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-l-xl focus:outline-none focus:border-medicalTeal text-sm text-white">
+                        <button type="submit" class="bg-medicalTeal px-5 py-3 rounded-r-xl hover:bg-teal-700 transition"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Bottom Footer -->
+            <div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
+                <p>&copy; 2024 K.H. Maliwad Institute of Nursing. All Rights Reserved.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-white transition">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition">Terms of Service</a>
+                    <a href="#" class="hover:text-white transition">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/919876543210" target="_blank" class="fixed bottom-6 right-6 bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-2xl hover:bg-green-600 transition z-50 hover:scale-110">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- JavaScript for Mobile Menu -->
+    <script>
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
